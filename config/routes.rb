@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+  get "habits/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :habits, only: [:show] do
+    member do
+      post :plus
+      post :minus
+    end
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
